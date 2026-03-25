@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>EduCore Platform</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+<aside class="sidebar">
+    <h2>EduCore</h2>
+    <button data-page="home">Home</button>
+    <button data-page="courses">Courses</button>
+    <button data-page="account">Account</button>
+    <button data-page="support">Support</button>
+</aside>
+
+<main class="content">
+
+<section data-section="home" class="active">
+    <div class="hero">
+        <h1>Upgrade Your Skills</h1>
+        <p>Join thousands of learners worldwide</p>
+    </div>
+</section>
+
+<section data-section="courses">
+    <h2>Available Courses</h2>
+    <div class="cards">
+
+        <article onclick="loadCourse(0)">
+            <h3>Cloud Computing</h3>
+            <p>Instructor: Daniel</p>
+        </article>
+
+        <article onclick="loadCourse(1)">
+            <h3>Cyber Security</h3>
+            <p>Instructor: Sophia</p>
+        </article>
+
+        <article onclick="loadCourse(2)">
+            <h3>Game Development</h3>
+            <p>Instructor: Ethan</p>
+        </article>
+
+    </div>
+</section>
+
+<section data-section="details">
+    <h2 id="cTitle"></h2>
+    <p id="cDesc"></p>
+    <p><b>Trainer:</b> <span id="cTrainer"></span></p>
+    <p><b>Price:</b> <span id="cPrice"></span></p>
+    <ul id="cList"></ul>
+</section>
+
+<section data-section="account">
+    <h2>Create Profile</h2>
+    <form id="regForm">
+        <input type="text" id="n" placeholder="Name" required>
+        <input type="email" id="e" placeholder="Email" required>
+        <input type="password" id="p" placeholder="Password" required>
+        <input type="password" id="cp" placeholder="Confirm Password" required>
+        <button>Submit</button>
+    </form>
+</section>
+
+<section data-section="support">
+    <h2>Contact</h2>
+    <p>Email: help@educore.com</p>
+    <form id="msgForm">
+        <input type="text" placeholder="Name" required>
+        <textarea placeholder="Message" required></textarea>
+        <button>Send</button>
+    </form>
+</section>
+
+</main>
+
+</div>
+
+<script>
+const sections=document.querySelectorAll("[data-section]");
+document.querySelectorAll(".sidebar button").forEach(btn=>{
+btn.onclick=()=>switchPage(btn.dataset.page);
+});
+
+function switchPage(name){
+sections.forEach(s=>s.classList.remove("active"));
+document.querySelector(`[data-section='${name}']`).classList.add("active");
+}
+
+const db=[
+{t:"Cloud Computing",tr:"Daniel",pr:"60",d:"Learn cloud services",l:["AWS","Azure","Deployment"]},
+{t:"Cyber Security",tr:"Sophia",pr:"70",d:"Protect systems",l:["Ethical Hacking","Network","Defense"]},
+{t:"Game Development",tr:"Ethan",pr:"50",d:"Build games",l:["Unity","C#","Physics"]}
+];
+
+function loadCourse(i){
+let c=db[i];
+cTitle.textContent=c.t;
+cDesc.textContent=c.d;
+cTrainer.textContent=c.tr;
+cPrice.textContent="$"+c.pr;
+cList.innerHTML=c.l.map(x=>"<li>"+x+"</li>").join("");
+switchPage("details");
+}
+
+regForm.onsubmit=e=>{
+e.preventDefault();
+if(p.value!==cp.value){alert("Passwords mismatch");return;}
+alert("Account created");
+switchPage("home");
+};
+
+msgForm.onsubmit=e=>{
+e.preventDefault();
+alert("Message sent");
+switchPage("home");
+};
+
+switchPage("home");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<platform>
+    <courses>
+
+        <course>
+            <title>Cloud Computing</title>
+            <instructor>Daniel</instructor>
+            <price>60</price>
+            <duration>40</duration>
+            <description>Learn cloud services and deployment</description>
+            <topics>
+                <topic>AWS</topic>
+                <topic>Azure</topic>
+                <topic>Deployment</topic>
+            </topics>
+        </course>
+
+        <course>
+            <title>Cyber Security</title>
+            <instructor>Sophia</instructor>
+            <price>70</price>
+            <duration>45</duration>
+            <description>Protect systems and networks</description>
+            <topics>
+                <topic>Ethical Hacking</topic>
+                <topic>Network Security</topic>
+                <topic>Defense Systems</topic>
+            </topics>
+        </course>
+
+        <course>
+            <title>Game Development</title>
+            <instructor>Ethan</instructor>
+            <price>50</price>
+            <duration>30</duration>
+            <description>Build games using modern tools</description>
+            <topics>
+                <topic>Unity</topic>
+                <topic>C#</topic>
+                <topic>Game Physics</topic>
+            </topics>
+        </course>
+
+    </courses>
+</platform>
